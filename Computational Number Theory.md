@@ -61,8 +61,24 @@
            - 앨리스: K = $B^a$ (mod p) = $(g^b)^a$ (mod p)
            - 밥: K = $A^b$ (mod p) = $(g^a)^b$ (mod p)
            - 결과적으로 두 사람은 동일한 값 K = $g^ab$ (mod p)를 공유하게 됨
+
   - Notation
+    1. $\mathbb{Z}$(정수 집합, Integers)
+       - 음의 정수, 0, 양의 정수를 모두 포함하는 집합
+       - $\mathbb{Z}$ = {...,-2, -1, 0, 1, 2,...}
+    2. $\mathbb{N}$(자연수 집합, Natural Number)
+       - 컴퓨터 과학이나 집합론에서는 보통 0을 포함시킴
+       - $\mathbb{N}$ = {0, 1, 2,...}
+    3. $\mathbb{Z}_+$(양의 정수 집합, Positive Integers)
+       - 정수 중에서 0보다 큰 값들만 모은 집합
+       - 0을 포함하지 않는 자연수와 동일한 집합
+       - $\mathbb{Z}_+$ = {1, 2, 3,...}
+  
   - Integers mod N
+    - For *N* $\in \mathbb{Z}_+$
+       - $\mathbb{Z}_N$ = {0, 1,..., N-1}
+       - $\mathbb{Z}_N^*$ = {a $\in \mathbb{Z}_N : gcd(a, N) = 1}
+       - 
   - Division and mod
 - Groups
   - Definitions, properties, and notations
