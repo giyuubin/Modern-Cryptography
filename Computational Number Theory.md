@@ -85,7 +85,18 @@
          - $(\mathbb{Z}_N^*)$ 의 집합의 크기(원소의 개수)
          - Ex) <img width="395" height="136" alt="image" src="https://github.com/user-attachments/assets/2349b855-7622-441d-bef3-c3eb45faf7b5" />
 
-  - Division and mod
+  - Division and mod(앞으로 모든 계산은 N으로 나눈 나머지(mod)를 기준으로 돌아간다)
+    - INT-DIV(정수 나눗셈): 어떤 수 a를 N으로 나누었을 때, 목 q와 나머지 r을 반환하는 함수
+      - INT-DIV(a, N) returns (q, r) such that
+        - a = qN + r
+        - $0 \leq r < N$
+
+    - The mod operation(모듈로 연산)
+      - a mod N = $r \in \mathbb{Z}^+$
+      - mod는 +, * 등과 같이 두 개의 인자를 받는(이항) 연산이다
+
+    - Congruences(합동)
+      - $a \equiv b \pmod N$ means $a \bmod N = b \bmod N$
 - Groups
   - Definitions, properties, and notations
     - Closure
