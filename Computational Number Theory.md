@@ -78,10 +78,13 @@
     - For *N* $\in \mathbb{Z}_+$
       ($\because$ 암호학에서 소수점이나 음수로 나머지를 구하는 건 의미가 없다)
        - $\mathbb{Z}_N$ = {0, 1,..., N-1}
-         - 어떤 수를 N으로 나누었을 때 나올 수 있는 모든 나머지 집합
+         - 어떤 수를 N으로 나누었을 때 나올 수 있는 모든 나머지 집합(모듈로 N 연산)
        - $\mathbb{Z}_N^*$ = {a $\in \mathbb{Z}_N : gcd(a, N) = 1}
-         - $\mathbb{Z}_N$중에서 N과 최대공약수가 1인(즉, 서로소인) 애들만 따로 뽑아낸 집합
+         - $\mathbb{Z}_N$중에서 N과 최대공약수가 1인(즉, 서로소인) 애들만 따로 뽑아낸 집합(역원을 구하 위해)
        - $\varphi(N)$ = $|\mathbb{Z}_N^*|$
+         - $(\mathbb{Z}_N^*)$ 의 집합의 크기(원소의 개수)
+         - Ex) <img width="395" height="136" alt="image" src="https://github.com/user-attachments/assets/2349b855-7622-441d-bef3-c3eb45faf7b5" />
+
   - Division and mod
 - Groups
   - Definitions, properties, and notations
