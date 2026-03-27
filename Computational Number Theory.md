@@ -95,8 +95,9 @@
       - a mod N = $r \in \mathbb{Z}^+$
       - mod는 +, * 등과 같이 두 개의 인자를 받는(이항) 연산이다
 
-    - Congruences(합동)
+    - Congruences(합동): mod 연산에 대한 설명
       - $a \equiv b \pmod N$ means $a \bmod N = b \bmod N$
+
 - Groups
   - Definitions, properties, and notations
     - Closure
