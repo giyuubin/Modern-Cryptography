@@ -97,15 +97,30 @@
 
     - Congruences(합동): mod 연산에 대한 설명
       - $a \equiv b \pmod N$ means $a \bmod N = b \bmod N$
-
-
-
-
-
+        
 - Groups
+  - Binary operation: 연산 기호의 생김새와 상관없이 어떤 집합 안에서 원소 두 개(a, b)를 골라 어떤 '특정 규칙에 넣었을 때 결과값이 나오기만 한다면 그것을 모두 binary operation이라 부른다.
+
+   - Group의 공식 정의
+    - 어떤 그룹 *G*가 group으로 인정받으려면 closure, associativity, identity, inverse를 모두 만족해야한다.
+    - 양의 정수 *N*에 대하여, 멤버 집합 $\mathbb{Z}_N^*$와 모듈로 곱셈의 조합은 이 4가지 조건을 만족한다.(이제부터 4가지를 하나씩 증명)
+
   - Definitions, properties, and notations
-    - Closure
-    - Associativity
+    - Closure(닫힘)
+      - 정의: 집합 안에서 두 원소 a, b를 골라 연산했을 때, 그 결과값도 반드시 원래 집합 *G*안에 있어야 한다.
+      - 실패 예시: 기본 집합 $\mathbb{Z}{12}$에서 곱셈을 하면 $7 \cdot 5 = 35$가 된다. 35는 $\mathbb{Z}{12}$에 속하지 않으므로 닫혀있지 않는다.
+      - 성공 예시: 정예 멤버 집합 {1, 5, 7, 11}에서 5와 7을 골라 모튤로 12 곱셈을 하면 $5 \cdot 7 \bmod 12 = 35 \bmod 12 = 11$이다. 11은 집합안에 존재한다.
+      - 수학적 원리: 어떤 두 숫자가 N과 서로소라면, 그 두 숫자를 곱해서 N으로 나눈 나머지 역시 N과 서로소라는 $\gcd(ab \bmod N, N) = 1$이 적용되기 때문이다.
+      - <img width="677" height="131" alt="image" src="https://github.com/user-attachments/assets/94f3e028-9d90-4986-8b74-28149a22c2d2" />
+
+    - Associativity(결합법칙)
+      - 정의: a, b, c 세 숫자를 연산할 때, 괄호를 쳐서 앞의 두 개를 먼저 계산하든 뒤의 두 개를 계산하든 최종 결과가 같아야 한다.
+      - 배경: 일반 곱하기는 괄호를 마음대로 쳐도 상관없는데, 곱하고 나서 *N*으로 나누는 모듈로 규칙을 씌워도 결합법칙이 여전히 안 깨지고 잘 작동할까? 
+      - 수학적 원리: $((ab \bmod N)c) \bmod N = (a(bc \bmod N)) \bmod N$ 이 항상 성립한다.
+      - 증명 예시: $\mathbb{Z}_{12}^*$의 원소 5, 7, 11를 이용해 보면,
+        1. 앞을 먼저 묶을 때: $(5 \cdot 7 \bmod 12) \cdot 11 \bmod 12 \rightarrow 11 \cdot 11 \bmod 12 = 1$
+        2. 뒤를 먼저 묶을 때: $5 \cdot (7 \cdot 11 \bmod 12) \bmod 12 \rightarrow 5 \cdot 5 \bmod 12 = 1$
+           - 양쪽 결과가 1로 완벽하게 동일하다.(암호 연산의 순서가 보장됨)
     - Identity
     - Inverse
   - Exponentiation
