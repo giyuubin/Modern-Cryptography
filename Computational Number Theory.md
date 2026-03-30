@@ -141,7 +141,13 @@
       - 증명 예시: $\mathbb{Z}_{12}^*$ 에서 5의 역원은 $5 \cdot b \bmod 12 = 1$ 을 만족하는 $b$를 집합 $\{1, 5, 7, 11\}$ 안에서 찾으면 된다.
         - $b = 5$ 를 대입하면 $5 \cdot 5 = 25$ 이고, $25 \bmod 12 = 1$ 이 성립하므로 5의 역원은 5이다.
           
-  - Exponentiation
+  - Exponentiation(거듭제곱)
+    - 배경: 그룹 안에서 원소 a를 여러 번 반복해서 연산하는 것을 수학적으로 어떻게 표기할 것인가?
+    - Multiplicative notation(곱셈 표기법)
+      - 연산 기호가 곱셈 계열일 경우 $a^n$으로 표기한다
+      - $a^0 = id$ (항등원, 보통 1)로 정의한다
+      - $a^{-1}$ 은 $a$의 역원(inverse)을 뜻하며, $a^{-n}$ 은 역원을 $n$번 곱한 $(a^{-1})^n$ 을 의미한다
+      - 
 - Computing in $\mathbb{Z}_N$ and $\mathbb{Z}_N*$
   - Computational Shortcuts
   - Group Orders
