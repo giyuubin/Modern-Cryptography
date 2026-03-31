@@ -98,6 +98,7 @@
 
     - Congruences(합동): mod 연산에 대한 설명
       - $a \equiv b \pmod N$ means $a \bmod N = b \bmod N$
+        - **$a \equiv b \pmod N$ 이 성립한다는 것은, 두 수의 차이($a - b$)가 $N$의 배수이다!**
         
 - Groups
   - 배경
@@ -157,13 +158,22 @@
         
 - Computing in $\mathbb{Z}_N$ and $\mathbb{Z}_N*$
   - Computational Shortcuts
-    - Slow way: 다 곱해서 큰 수를 만든 다음 $N$으로 나눈다.
-    - **Faster way**: 두 개를 곱할 때마다 바로바로 $N$으로 나누어 나머지를 구한다.
-    - Ex) ($5 \cdot 8 \cdot 10 \cdot 16 \bmod 21$ 계산하기):
-      1. $5 \cdot 8 = 40 \rightarrow \mathbf{19}$
-      2. $\mathbf{19} \cdot 10 = 190 \rightarrow \mathbf{1}$
-      3. $\mathbf{1} \cdot 16 = \mathbf{16}$
+    - $abc \bmod N = ?$
+      - Slow way: 다 곱해서 큰 수를 만든 다음 $N$으로 나눈다.
+      - **Faster way**: 두 개를 곱할 때마다 바로바로 $N$으로 나누어 나머지를 구한다.
+      - Ex) ($5 \cdot 8 \cdot 10 \cdot 16 \bmod 21$ 계산하기):
+        1. $5 \cdot 8 = 40 \rightarrow \mathbf{19}$
+        2. $\mathbf{19} \cdot 10 = 190 \rightarrow \mathbf{1}$
+        3. $\mathbf{1} \cdot 16 = \mathbf{16}$
+
     - 공식: $abc \bmod N = ((ab \bmod N)c) \bmod N$
+
+    - 암호학적 의미: 계산의 매 단계마다 모듈로로 숫자를 쳐내서, 항상 숫자의 크기를 $N$보다 작게 유지해야 컴퓨터가 메모리 초과 없이 암호 연산을 할 수 있다.
+
+    - Ex) $5^8 \bmod 14$
+      - $(5^2)^4 \equiv 11^4 \equiv (11^2)^2 \equiv (-3)^2 \equiv 9^2 \equiv 81 \equiv 25 \equiv 11$
+        - 앞서 언급한 "$a \equiv b \pmod N$ 이 성립한다는 것은, 두 수의 차이($a - b$)가 $N$의 배수이다"를 이용해 $11 \equiv -3 \pmod{14}$로 만들어 계산
+      
   - Group Orders
   - Simplifying exponentiation
 - Algorithms on numbers
