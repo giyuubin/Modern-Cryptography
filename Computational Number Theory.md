@@ -172,9 +172,13 @@
 
     - Ex) $5^8 \bmod 14$
       - $(5^2)^4 \equiv 11^4 \equiv (11^2)^2 \equiv (-3)^2 \equiv 9^2 \equiv 81 \equiv 25 \equiv 11$
-        - 앞서 언급한 "$a \equiv b \pmod N$ 이 성립한다는 것은, 두 수의 차이($a - b$)가 $N$의 배수이다"를 이용해 $11 \equiv -3 \pmod{14}$로 만들어 계산
+        - 앞서 언급한 "$a \equiv b \pmod N$ 이 성립한다는 것은, 두 수의 차이($a - b$)가 $N$의 배수이다"를 이용해 $11 \equiv -3 \pmod{14}$로 만들어 계산.
       
-  - Group Orders
+  - Group Orders(군의 위수)
+    - 배경: 그렇다면 $5^{100000}$같은 계산은 어떻게 해야하는가..
+    - 정의: 어떤 그룹 $G$ 안에 들어있는 **'원소의 총개수'**를 뜻하며, 기호로 $|G|$ 라고 쓴다.
+      - $\mathbb{Z}_N^*$ 의 위수는 1부터 $N$까지의 숫자 중 $N$과 서로소인 숫자의 개수이다.
+    - 
   - Simplifying exponentiation
 - Algorithms on numbers
   - (Extended) gcd
