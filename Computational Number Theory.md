@@ -142,14 +142,28 @@
         - $b = 5$ 를 대입하면 $5 \cdot 5 = 25$ 이고, $25 \bmod 12 = 1$ 이 성립하므로 5의 역원은 5이다.
           
   - Exponentiation(거듭제곱)
-    - 배경: 그룹 안에서 원소 a를 여러 번 반복해서 연산하는 것을 수학적으로 어떻게 표기할 것인가?
+    - 배경
+      - 그룹 안에서 원소 a를 여러 번 반복해서 연산하는 것을 수학적으로 어떻게 표기할 것인가?
+      - 우리는 이제 그냥 숫자가 아니라 모듈로 $N$이 적용된 $\mathbb{Z}_N^*$이라는 특수한 환경에 있다. 그렇다면 우리가 배웠던 지수 법칙들이 이 특수한 세계에서도 에러없이 똑같이 작동하는가? 그렇다!
+
     - Multiplicative notation(곱셈 표기법)
       - 연산 기호가 곱셈 계열일 경우 $a^n$으로 표기한다
       - $a^0 = id$ (항등원, 보통 1)로 정의한다
-      - $a^{-1}$ 은 $a$의 역원(inverse)을 뜻하며, $a^{-n}$ 은 역원을 $n$번 곱한 $(a^{-1})^n$ 을 의미한다
-      - 
+      - $a^{-1}$ 은 $a$의 역원(inverse)을 뜻하며, $a^{-n}$ 은 역원을 $n$번 곱한 $(a^{-1})^n$ 을 의미한다.
+      - 우리가 아는 지수 법칙($a^{i+j} = a^i \cdot a^j$)을 "평소처럼(as usual)" 쓸 수 있다.
+
+    - Additive notation(덧셈 표기법- 참고)
+      - 연산 기호가 덧셈일 경우 $na$ 또는 $[n]a$ 로 표기한다. (타원 곡선 암호에서 가끔 쓰인다)
+        
 - Computing in $\mathbb{Z}_N$ and $\mathbb{Z}_N*$
   - Computational Shortcuts
+    - Slow way: 다 곱해서 큰 수를 만든 다음 $N$으로 나눈다.
+    - **Faster way**: 두 개를 곱할 때마다 바로바로 $N$으로 나누어 나머지를 구한다.
+    - Ex) ($5 \cdot 8 \cdot 10 \cdot 16 \bmod 21$ 계산하기):
+      1. $5 \cdot 8 = 40 \rightarrow \mathbf{19}$
+      2. $\mathbf{19} \cdot 10 = 190 \rightarrow \mathbf{1}$
+      3. $\mathbf{1} \cdot 16 = \mathbf{16}$
+    - 공식: $abc \bmod N = ((ab \bmod N)c) \bmod N$
   - Group Orders
   - Simplifying exponentiation
 - Algorithms on numbers
@@ -159,4 +173,3 @@
     - Modular Inverse
   - Exponentiation
     - Square-and-Multiply Exponentiation Algorithm
-
