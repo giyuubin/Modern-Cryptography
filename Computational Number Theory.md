@@ -232,7 +232,12 @@
       
   - (Extended) gcd
     - EXT-GCD(확장 유클리드 호제법, 확장 유클리드 알고리즘)
-      - 
+      - 배경
+        - 앞서 $a \cdot b \equiv 1 \pmod N$ 이 되는 역원($b$)을 무조건 찾을 수 있다고 배웠다.
+        - 그 역원을 찾아주는 것이 EXT-GCD이다.
+ 
+      - 기존 유클리드 호제법: 두 수 $a$와 $N$의 최대공약수 $\gcd(a,N)$ 만 구해준다.
+      - EXT-GCD(확장 유클리드 호제법): 최대공약수 $r$을 구해줄 뿐만 아니라, $r = a \cdot u + N \cdot v$ 를 만족하는 계수 $u$와 $v$까지 함께 찾아준다.
     - Lemma
     - Modular Inverse
   - Exponentiation
