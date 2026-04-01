@@ -242,12 +242,14 @@
       - 정의(EXT-GCD)
         - 입력: 두 정수 $a$와 $N$
         - 출력: $(r, u, v)$ 세 개의 값
+
         - $r = gcd(a, N) = a \cdot u + N \cdot v$
-          - $a$와 $N$의 최대공약수 $r$을 $a$의 $u$배와
+          - $a$와 $N$의 최대공약수 $r$을 $a$의 $u$배와 $N$의 $v$배를 더한 형태로 표현할 수 있게 해주는 계수 $u$, $v$를 변환하는 함수이다.
         
     - Lemma(보조정리)
       - 그렇다면 EXT-GCD는 계수 $u$와 $v$를 어떻게 찾아낼까?
       - 정의: 어떤 수 $a$를 $N$으로 나누었을 때 몫을 $q$, 나머지를 $r$이라고 하면, $gcd(a, N) = gcd(N, r)$이 성립한다.
+        - 거대한 두 숫자의 최대공약수를 구하는 복잡한 문제를, 훨씬 작은 두 숫자의 최대공약수를 구하는 문제로 축소 시겨준다. 컴퓨터는 나머지가 0이 될 때까지 이 Lemma를 반복한다.
     - Modular Inverse
   - Exponentiation
     - Square-and-Multiply Exponentiation Algorithm
