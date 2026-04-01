@@ -238,7 +238,16 @@
  
       - 기존 유클리드 호제법: 두 수 $a$와 $N$의 최대공약수 $\gcd(a,N)$ 만 구해준다.
       - EXT-GCD(확장 유클리드 호제법): 최대공약수 $r$을 구해줄 뿐만 아니라, $r = a \cdot u + N \cdot v$ 를 만족하는 계수 $u$와 $v$까지 함께 찾아준다.
-    - Lemma
+     
+      - 정의(EXT-GCD)
+        - 입력: 두 정수 $a$와 $N$
+        - 출력: $(r, u, v)$ 세 개의 값
+        - $r = gcd(a, N) = a \cdot u + N \cdot v$
+          - $a$와 $N$의 최대공약수 $r$을 $a$dml $u$배와
+        
+    - Lemma(보조정리)
+      - 그렇다면 EXT-GCD는 계수 $u$와 $v$를 어떻게 찾아낼까?
+      - 정의: 어떤 수 $a$를 $N$으로 나누었을 때 몫을 $q$, 나머지를 $r$이라고 하면, $gcd(a, N) = gcd(N, r)$이 성립한다.
     - Modular Inverse
   - Exponentiation
     - Square-and-Multiply Exponentiation Algorithm
