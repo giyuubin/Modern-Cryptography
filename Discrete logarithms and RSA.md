@@ -1,0 +1,8 @@
+- Discrete logarithms and RSA
+  - Cyclic groups and discrete logarithms
+    - Generators and cyclic groups
+    - Discrete Logarithms
+  - Finding cyclics groups
+    - Examples of groups
+    - DL and CDH games
+    - Choosing/Building groups of the form $$
