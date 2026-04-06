@@ -1,8 +1,9 @@
 - Discrete logarithms and RSA
   - Cyclic groups and discrete logarithms
     - Generators and cyclic groups
+      - 위수(Order)가 $m$인 군 $G$와 그 원소 $g \in G$가 있을 때, $g$에 의해 생성되는 집합은 
     - Discrete Logarithms
   - Finding cyclics groups
     - Examples of groups
     - DL and CDH games
-    - Choosing/Building groups of the form $$
+    - Choosing/Building groups of the form $Z_p^*$
