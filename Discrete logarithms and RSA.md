@@ -11,13 +11,9 @@
   - Fermat's Little Theorem 1
 ---
 - Mathematical Foundations
+  - Definition of the Multiplicative Group
   - Fermat's Little Theorem
   - Cyclic Groups and Generators
-  - Safe Prime
-- Discrete Logarithm Problem(DLP)
-  - Discrete Logarithm Problem
-  - DF key exchange and CDH games
-  - Large Prime
 ---
 - Mathmatical Foundations
   - Definition of the Multiplicative Group
