@@ -1,16 +1,28 @@
-- Cumputational Number Theory
-  1. DH key exchange: 거대 소수의 필요성
-  2. Safe Prime
-  3. Fermat's Little Theorem
+- Mathematical Foundations
+  - Definition of the Multiplicative Group
+  - Fermat's Little Theorem
+  - Cyclic Groups and Generators
 ---
-1. DH key exchange
-   - 용어 정리:
-     - Primitive Root(생성원 또는 원시근)
-       - Ex: mod 19에서 a = 7을 거듭제곱 (p = 19)
-         - => $7^1 = 7$, $7^2 = 49 \equiv 11(mod 19)$, $7^3 = 77 \equiv 1(mod 19)$
-         - => 주기 = 3
-       - 하지만 어떤 특정한 수들은 거듭제곱 했을 때 1~p-1까지의 모든 정수를 단 한 번씩 중복없이 모두 생성해낸다
-       - Ex: mod 19의 경우 2, 3, 10, 13, 14, 15가 이에 해당됨 // 이들은 $\phi(n) = 18$ 제곱해야 1이 나옴
-       - 이처럼 모듈러 집합 내의 모든 고유한 값을 빠짐없이 생성해내는 수를 primitive root라 한다
-     - Discrete Logarithms(이산대수)
-       - p가 소수이고, a가 p의 원시근일 때, 주어진 값 b에 대하여 b 
+- 2
+  - 본 발표에서는 암호학적 연산이 수행되는 대수학적 공간의 수학적 기초를 다루겠습니다.
+  - 거대한 지수 연산이 발산하지 않도록 통제하는 페르마의 소정리와, 그 연산 공간을 빠짐없이 활용하게 만드는 순환군과 생성자의 대수학적 증명 과정을 중심적으로 살펴보겠습니다.
+---
+- 3~5
+- Definition of the Multiplicative Group
+  - 먼저 암호학적 연산 공간인 곱셈군 $Z_p^*$를 다시 정의하겠습니다.
+  - 안전한 암호 연산을 위해 모듈러 $p$ 공간을 사용하되, 역원이 존재하지 않는 0을 집합에서 배제합니다.
+  - 0이 제외되었으므로 닫힌 공간의 전체 원소 개수인 군의 위수 $m$은 p-1이 되며, 곱셈에 대한 항등원 id는 1이 됩니다.
+  - 앞에서 대수학적 군론의 기본 정리에서, 위수가 $m$인 군의 임의의 원소 $a$를 $m$번 거듭제곱하면 항상 항등원 id로 되돌아온다($a^m = id$)는 것을 증명했습니다.
+  - 이 일반 정리에 우리가 정의한 $Z_p^*$의 위수 $m = p-1$과 항등원 1을 대입하면, 암호학에서 사용하는 $a^{p-1} \equiv 1 \pmod{p}$ 수식이 도출됩니다.
+---
+- 6~9
+- 
+
+
+
+
+
+
+
+
+
