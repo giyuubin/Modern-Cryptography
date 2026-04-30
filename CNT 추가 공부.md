@@ -19,7 +19,7 @@
 - Fermat's Little Theorem
   - 이 대수학적 결과를 정수론의 관점에서 증명해 보겠습니다.
   - 소수 $p$와 서로소인 $a$에 대하여
-    $1a \times 2a \times 3a \times \cdot \cdot \cdot \times (p-1)a를 전개합니다.
+    $1a \times 2a \times 3a \times \cdot \cdot \cdot \times (p-1)a$ 를 전개합니다.
   - $Z_p^*$ 집합의 모든 원소에 $a$를 곱하는 연산은 집합의 원소를 외부로 이탈시키는게 아니라, 내부에서 원소의 순서만 일대일로 치환하는 전단사(일대일 대응, 역함수 존재의 필충) 사상입니다.
   - 구성물이 완벽히 동일하므로 모든 원소를 곱한 결과 역시 모듈러 $p$공간에서 합동이어야 합니다.
   - 따라서 $a^{p-1}(p-1)! \equiv (p-1)! \pmod{p}$가 도출됩니다.
