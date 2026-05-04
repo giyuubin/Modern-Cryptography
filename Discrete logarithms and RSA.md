@@ -1,52 +1,20 @@
 - Discrete logarithms and RSA
-  - Cyclic groups and discrete logarithms 2
+  - Cyclic groups and discrete logarithms
     - Generators and cyclic groups
-    - Discrete Logarithms 4 
+    - Discrete Logarithms 
   - Finding cyclics groups
     - Examples of groups
-    - DL and CDH games 5
+    - DL and CDH games
     - Choosing/Building groups of the form $Z_p^*$
-  - DH key exchange: 거대 소수의 필요성 6
-  - Safe Prime 3
-  - Fermat's Little Theorem 1
+  - DH key exchange: 거대 소수의 필요성
+  - Safe Prime
 ---
-- Mathematical Foundations
-  - Definition of the Multiplicative Group
-  - Fermat's Little Theorem
-  - Cyclic Groups and Generators
----
-- Mathmatical Foundations
-  - Definition of the Multiplicative Group
-    - Definition: Muliplicative Group $Z_p^*$
-      - set of integers moudulo prime $p$, excluding 0.
-      - $Z_p^* = {1, 2, ..., p-1}$
-    - Properties of $Z_p^*$:
-      - Identity element: $id = 1$
-      - Order of the group: $|Z_p^*| = p-1$
-    - Fact (General Group Theory):
-      - Let $G$ be a group of order $m$ and $a \in G$.
----
-  - Fermat's Little Theorem
-    - $p$가 소수이고 $a$가 $p$로 나누어떨어지지 않는 양의 정수이면(즉, $gcd(a, p) = 1$),
-      $a^{p-1} \equiv 1 \pmod{p}$이 항상 성립한다
-    - 증명:
-      - $1a \times 2a \times 3a \times \cdot \cdot \cdot \times (p-1)a \equiv [1 \times 2 \times \cdot \cdot \cdot \times (p-1)] \pmod{p}$
-      - $a^{p-1}(p-1)! \equiv (p-1)! \pmod{p}$
-      - (p-1)과 p는 서로소
-      - $\therefore$ $a^{p-1} \equiv 1 \pmod{p}$
- ---
-   - 설정: 소수 $p = 5$, 양의 정수 $a = 3$(gcd(3, 5) = 1)
-     1. Multiplicative Group($Z_5^*$)정의:
-        - $Z_5^*$ = {1, 2, 3, 4}
-        - Order $m = p-1 = 4$.
-     2. 
-
-
-
-
-
-
-
-
-
-
+- Discrete Logarithms (이산 로그 문제와 대수학적 한계)
+  - 순환 군 내 이산 로그(DLP)의 수학적 정의
+  - 해독 알고리즘의 계산 복잡도(Time Complexity)와 타원 곡선 암호(ECC)의 도입 배경
+- DL and CDH Games (암호학적 난제 공식화)
+  - 이산 로그 게임(DL Game)의 의사코드(Pseudocode)와 어드밴티지
+  - 전산적 Diffie-Hellman(CDH) 문제의 정의와 상호 환원성
+- Finding Cyclic Groups (안전한 순환 군 구축)
+  - 부분군 공격 방어를 위한 안전 소수(Safe Prime) 탐색
+  - 확률론적 소수 판별 알고리즘과 소수 밀도 정리(Density of Primes)
