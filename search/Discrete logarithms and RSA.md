@@ -18,3 +18,6 @@
 - Finding Cyclic Groups (안전한 순환 군 구축)
   - 부분군 공격 방어를 위한 안전 소수(Safe Prime) 탐색
   - 확률론적 소수 판별 알고리즘과 소수 밀도 정리(Density of Primes)
+---
+- Discrete Logarithms
+  - 
