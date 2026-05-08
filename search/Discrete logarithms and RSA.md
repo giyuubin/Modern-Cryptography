@@ -37,7 +37,7 @@ $$i = \text{DLog}_{G,g}(a)$$
   - 대수학적으로 이산 로그 함수는 지수화 함수의 완벽한 역함수로 작동한다. 따라서 다음 두 가지의 항등식이 항상 성립한다.
     - $\text{DLog}_{G,g}(g^i) = i$  for all $i \in Z_m$
     - $g^{\text{DLog}_{G,g}(a)} = a$ for all $a \in G$ 
-
+---
 
 
 
