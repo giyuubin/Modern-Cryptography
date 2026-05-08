@@ -38,7 +38,8 @@ $$i = \text{DLog}_{G,g}(a)$$
     - $\text{DLog}_{G,g}(g^i) = i$  for all $i \in Z_m$
     - $g^{\text{DLog}_{G,g}(a)} = a$ for all $a \in G$ 
 ---
-
+- Ex: 모듈러 11 환경에서의 이산 로그 역산 전개
+  - 
 
 
 
