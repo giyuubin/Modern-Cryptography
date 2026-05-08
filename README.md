@@ -1,12 +1,16 @@
-# 🔐 Modern Cryptography Seminar
-> [🌐 Visit My Blog](https://giyuubin.github.io/Modern-Cryptography/)
+# 🔐 Modern Cryptography
+> **Academic Archive for Modern Cryptography & Cryptanalysis**
+> 🌐 **[Visit My Archive](https://giyuubin.github.io/Modern-Cryptography/)**
 
-## 🎯 Learning Objectives
-- Understanding the progression from **Algebraic Foundations (Group Theory)** to **Modern Public-Key Cryptosystems**.
-- Analyzing the mathematical principles behind core protocols such as **RSA** and **Diffie-Hellman**.
-- Exploring cutting-edge security trends, including **Post-Quantum Cryptography (PQC)**.
+This folder contains my research, study materials, and seminar archives for Modern Cryptography.
 
-## 📂 Key Seminar Topics
-1. **[Algebraic Structures]**: Cyclic Groups, Fermat's Little Theorem
-2. **[Public Key Crypto]**: RSA Key Generation, Discrete Logarithm Problem (DLP)
-3. **[Key Exchange]**: Diffie-Hellman Protocol & Security Analysis
+## 📂 Folders
+
+### 🎤 [presentation](./presentation/)
+Contains seminar slides (PDFs) and related materials prepared for academic sessions.
+
+### 📝 [search](./search/)
+Contains technical study notes, concept summaries, academic references, and personal research records.
+
+---
+📫 **Contact:** giyuubin@gachon.ac.kr
