@@ -39,7 +39,14 @@ $$i = \text{DLog}_{G,g}(a)$$
     - $g^{\text{DLog}_{G,g}(a)} = a$ for all $a \in G$ 
 ---
 - Ex: 모듈러 11 환경에서의 이산 로그 역산 전개
-  - 
+  - <img width="617" height="145" alt="image" src="https://github.com/user-attachments/assets/9bc25879-d734-47f8-b35a-72dc731e86bc" />
+  
+    - 곱셈군 $Z_{11}^*$를 가져와 이산 로그를 수치적으로 매핑.
+    - 앞 시간에 이 군의 위수는 $m = 10$이며, 원소 $g = 2$는 $Z_{11}^*$의 생성자임을 증명했다.
+    - 우리의 목표:
+      - 주어진 원소 $a$에 대하여 $2^i \equiv a \pmod{11}$을 만족하는 지수
+        $i \in Z_{10}$ $(0 \le i \le 9)$를 역산하여
+        $\text{DLog}_{ \mathbb{Z}_{11}^* , 2 }(a)$를 구하는 것이다.
 
 
 
