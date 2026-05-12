@@ -70,7 +70,16 @@ $$i = \text{DLog}_{G,g}(a)$$
       - $a = 6$일 때: $2^9 = 512 = (11 \times 46) + 6 \equiv 6 \pmod {11}$ 이므로, $\text{DLog}_{G,2}(6) = 9$
 
     - 이러한 모듈러 지수 연산을 수행하면 결과값 $a \in$ {1, 2, 3, 4, 5, 6, 7, 8, 9, 10} 전체가 지수 $i \in ${0, 1, 2, 3, 4, 5, 6, 7, 8, 9}와 중복 없이 완벽하게 1:1로 대응됨을 확인할 수 있다.
-    - 하지만 숫자가 커지면, $a$만 보고 $i$를 찾는 것은 불가능에 가깝다.
+
+  - Computing Discrete Logs
+    - 위수가 $m$인 순환 군 $G = \langle g \rangle$와 생성자 $g \in G$가 주어졌을 때, 임의의 원소 $X \in G$에 대한 이산 로그 값 $x = \text{DLog}_{G,g}(X)$를 찾는 가장 기초적인 알고리즘은 Brute-force(전수 조사)이다.
+    - 이 알고리즘은 $g^x = X$를 만족하는 지수 $x$를 찾기 위해, 탐색 공간인 0부터 $m-1$까지의 모든 정수를 순차적으로 대입한다.
+    - Pseudocode
+      - <img width="302" height="173" alt="image" src="https://github.com/user-attachments/assets/3a479051-c422-42b6-b4a7-fdf357c050a0" />
+
+      - 당연히 탐색 공간 내에 반드시 정답이 존재하므로 수학적으로 항상 올바른 해를 반환한다.
+      - 하지만 연산 속도가 매우매우 느리다는 치명적인 수학적 한계가 존재한다.
+        
     - 이것이 Diffie-Hellman 키 교환을 가능하게 하는 이산 로그 문제의 난해성이다.
 ---
 - Time Complexity & ECC
