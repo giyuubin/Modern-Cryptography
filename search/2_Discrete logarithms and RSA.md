@@ -1,23 +1,25 @@
-- Discrete logarithms and RSA
-  - Cyclic groups and discrete logarithms
-    - Generators and cyclic groups
-    - Discrete Logarithms 
-  - Finding cyclics groups
-    - Examples of groups
-    - DL and CDH games
-    - Choosing/Building groups of the form $Z_p^*$
-  - DH key exchange: 거대 소수의 필요성
-  - Safe Prime
----
-- Discrete Logarithms (이산 로그 문제와 대수학적 한계)
-  - 순환 군 내 이산 로그(DLP)의 수학적 정의
-  - 해독 알고리즘의 계산 복잡도(Time Complexity)와 타원 곡선 암호(ECC)의 도입 배경
-- DL and CDH Games (암호학적 난제 공식화)
-  - 이산 로그 게임(DL Game)의 의사코드(Pseudocode)와 어드밴티지
-  - 전산적 Diffie-Hellman(CDH) 문제의 정의와 상호 환원성
-- Finding Cyclic Groups (안전한 순환 군 구축)
-  - 부분군 공격 방어를 위한 안전 소수(Safe Prime) 탐색
-  - 확률론적 소수 판별 알고리즘과 소수 밀도 정리(Density of Primes)
+- Discrete Logarithms
+  - Mathematical Definition of DLP
+  - Computing DLog: $Z_p^*$ vs $EC_p$
+  - Hardness Record and Quantum Threats
+- DL and CDH Games
+  - DL Game: Formal Definition & Advantage
+  - CDH Problem & Relationship to DL
+  - CDH Game: Advantage Analysis
+- Finding and Building Cyclic Groups
+  - Mathematical Fact for Group Selection
+  - Finding Primes & Safe Prime $(p = 2q + 1)$
+  - Primality Testind (Miller-Rabin) & Density
+  - Algorithm for Testing Generators
+- RSA Trapdoor Permutations
+  - RSA Math: Phi Function & Modulo Inverse
+  - RSA Function and Trapdoor One-wayness
+  - Factoring Problem & Attack Complexity
+- PKE and Security Notions
+  - Syntax and Correctness of PKE Schemes
+  - IND-CPA: Indistinguishability under Chosen-Plaintest Attack
+  - IND-CCA: Indistinguishability under Chosen-Ciphertest Attack
+  - Security Hierarchy: IND-CCA vs IND-CPA
 ---
 - **Discrete Logarithms (이산 로그)**
   - 이름의 유래:
@@ -85,7 +87,29 @@ $$i = \text{DLog}_{G,g}(a)$$
       이것이 Diffie-Hellman 키 교환을 가능하게 하는 이산 로그 문제의 난해성이다.
 ---
 - Time Complexity & ECC - 이산 로그의 계산 복잡도 한계와 타원 곡선 군의 도입.
-  - 
+  - DLP를 기반으로 하는 암호 시스템을 구축할 때, 해커가 쉽게 역산할 수 없는 안전한 순환 군을 어떻게 보장받고 선택할 것인가에 대한 수학적 해답
+---
+- Finding Cyclic Groups
+  - 어떤 유한군이 완벽한 순환 군이 됨을 수학적으로 보장하는 독립적인 두 가지 Fact가 존재한다.
+    - Fact1: Let $p$ be a prime. Then $Z_p^*$ is cyclic.
+    - Fact2: Let $G$ be any group whose order $m = |G|$ is a prime number. Then $G$ is cyclic.
+  - $|Z_p^*| = p-1$
+  - 만약 $p$가 2보다 큰 홀수 소수라면, $p-1$은 무조건 짝수가 되므로 결코 소수가 될 수 없다.
+  - 따라서 군의 위수가 소수임을 전제로 하는 Fact2를 이용해 Fact1을 유도하거나 내포할 수 없다.
+---
+- Cyclic group in cryptography
+  - 위 두 가지 대수학적 정리를 바탕으로, 현대 암호학은 뒤에 나올 이산 로그 게임을 전개하기 위해 다음 두 개의 순환 군을 채택한다.
+    - 1. Multiplicative groups of finite fields:
+      - Fact1에 의해 순환 군임이 보장되는 가장 직관적인 공간이다.
+      - 그러나 이 공간에서 이산 로그를 계산하는 최적 해독 알고리즘의 복잡도는
+        <img width="213" height="36" alt="image" src="https://github.com/user-attachments/assets/34d60ad9-96d8-4c59-b37c-40dba10eb8cf" />로 증명되어 있다.
+
+      - 이는 다항 시간보다는 느리지만 순수 지수 시간보다는 빠른 Subexponential time(준지수 시간) 알고리즘이므로 대수학적 취약점을 지닌다.
+
+    - 2. Elliptic curves over finite fields:
+      - $Z_p^*$의 준지수 시간 한계를 극복하기 위해 도입된 공간이다.
+      - Fact2의 성질을 활용하여 위수가 소수인 부분군을 취할 수 있다.
+      - 타원 곡선 구조 위에서는 앞선 준지수 시간 해독 알고리즘들이 무력화되며, 최적 해독 복잡도는 오직 <img width="207" height="36" alt="image" src="https://github.com/user-attachments/assets/fc2ebca5-458f-423c-9dc3-463140400ace" />인 Exponential time(순수 지수 시간)으로 보장된다.
 
 
 
