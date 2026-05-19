@@ -139,13 +139,13 @@ $$i = \text{DLog}_{G,g}(a)$$
 - DL Game
   - 배경: 이산 로그 문제의 난해성을 직관이 아닌 수학적 모델로 엄밀하게 평가하기 위해, 위수가 $m$인 순환 군 $G = \langle g \rangle$에서 공격자 $A$와 시스템 간의 상호작용을 게임 형태로 정의한다.
 
-  - <img width="678" height="137" alt="image" src="https://github.com/user-attachments/assets/5c4f70b6-f159-45fd-938a-0db4d18ba575" />
+  - <img width="673" height="177" alt="image" src="https://github.com/user-attachments/assets/f7569fce-560f-45fe-a169-3e9647261741" />
 
   - Initialize (초기화): 시스템은 무작위 지수 $x \leftarrow \mathbb{Z}_m$를 무작위로 선택하고, $X \leftarrow g^x$를 계산하여 공격자에게 공격값 $X$를 제공한다.
   - Finalize (검증): 공격자는 이산 로그 역산을 시도하여 도출한 지수 $x'$를 제출하며, 시스템은 ($x = x'$) 여부를 판별하여 결과를 반환한다.
 
   - DL-Advantage:
-    - 공격자 $A$가 이 게임에서 정확한 $x$를 찾아내어 승리할 확률을 $Adv_{G,g}^{cdh}(A) = Pr[CDH_{G,g}^A \Rightarrow true]$ 로 정의한다.
+    - 공격자 $A$가 이 게임에서 정확한 $x$를 찾아내어 승리할 확률을 $Adv_{G,g}^{dl}(A) = Pr[DL_{G,g}^A \Rightarrow true]$ 로 정의한다.
     - 안전한 암호 시스템을 구축하려면 이 확률이 현실적으로 무시할 수 있을 만큼 극히 낮아야 한다.
 ---
 - CDH Problem & Relationship to DL
@@ -155,6 +155,16 @@ $$i = \text{DLog}_{G,g}(a)$$
     - 만약 공격자가 이산 로그 문제를 풀 수 있는 알고리즘을 가졌다면, 공개값 $X$에서 지수 $x \leftarrow \text{DLog}_{G,g}(X)$를 도출한 뒤 반대편 공개값에 지수화 ($Y^x$)를 수행하여 CDH 문제를 쉽게 해결할 수 있다.
     - 역으로 "CDH 문제 풀 수 있으면 DL 문제도 풀 수 있는가?"는 미해결 문제이다.
     - 일단 매우 어렵다고 간주.
+---
+- CDH Game
+  - 배경: 위수가 $m$인 순환 군 $G = \langle g \rangle$에서 CDH 문제에 대한 공격자의 계산 능력을 평가하기 위한 게임 모델이다.
+ 
+  - <img width="673" height="202" alt="image" src="https://github.com/user-attachments/assets/a962dedb-7663-487c-92db-842ee0cb780c" />
+
+  - Initialize (초기화): 시스템은 두 개의 무작위 지수 $x, y \leftarrow Z_m$를 선택하고, $X \leftarrow g^x$와 $Y \leftarrow g^y$를 계산하여 두 공개값을 공격자에게 제공한다.
+  - Finalize (검증): 공격자는 획득한 두 공개값을 바탕으로 도출한 최종 비밀 키 후보 $Z$를 제출하며, 시스템은 이것이 실제 비밀 키와 동일한지 ($Z = g^{xy}$) 검증하여 결과를 반환한다.
+ 
+  - CDH-Advantage: 공격자 $A$가 CDH 게임에서 정확한 결합 비밀 키를 도출하여 승리할 확률은 $Adv_{G,g}^{cdh}(A) = Pr[CDH_{G,g}^A \Rightarrow true]$ 로 정의된다.
 ---
 
 
