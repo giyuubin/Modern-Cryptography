@@ -136,24 +136,26 @@ $$i = \text{DLog}_{G,g}(a)$$
       - 결과 분석: 타원 곡선 군은 매년 약 1.33 비트의 선형 확장만으로 무어의 법칙을 방어하지만, 곱셈군 $\mathbb{Z}_p^*$ 는 준지수 함수의 한계로 인해 초선형적인 폭발적 키 크기 팽창(1024 $\rightarrow$ 2048 $\rightarrow$ 4096-bit)을 강제당한다.
 ---
 - **DL and CDH Games**
-- DL Formally:
-  - 이산 로그 문제(DLP)의 안전성을 수학적으로 증명하고 수치화하기 위해, 암호학에서는 공격자(Adversary)와 정답을 검증하는 환경(Game) 간의 확률적 상호작용을 프로토콜 형태로 정의한다.
-  - 군(Group) 환경 설정: 위수(Order)가 $m$인 유한 순환 군 $G = \langle g \rangle$와 생성자 $g \in G$가 대중에게 공개되어 있다고 가정한다.
-- Game $\text{DL}_{G,g}$의 절차:
-  -<img width="676" height="140" alt="image" src="https://github.com/user-attachments/assets/e5778577-9bd4-48f1-a52c-cbea7f24048b" />
+- DL Game
+  - 배경: 이산 로그 문제의 난해성을 직관이 아닌 수학적 모델로 엄밀하게 평가하기 위해, 위수가 $m$인 순환 군 $G = \langle g \rangle$에서 공격자 $A$와 시스템 간의 상호작용을 게임 형태로 정의한다.
 
-  - Initialize 단계: 게임 환경이 군의 위수 범위 내에서 임의의 비밀 정수 $x \leftarrow \mathbb{Z}_m$를 균등 무작위(Uniformly at random)로 선택한다. 선택된 지수를 바탕으로 군의 생성자를 거듭제곱하여 원소 $X \leftarrow g^x$를 계산한 뒤 공격자 $A$에게 입력값(Challenge)으로 제공한다.
-  - Adversary의 연산: 공격자 $A$는 오직 공개 매개변수 $(G, g, X)$만을 알고 있는 상태에서 지수 $x$를 역산하기 위한 확률적 다항 시간(PPT) 알고리즘을 수행한다. 연산이 끝나면 공격자는 자신이 예측한 결과값 $x'$를 게임 환경에 제출한다.
-  - Finalize 단계: 게임 환경은 공격자가 제출한 $x'$를 수신하여 원래 알고 있던 내부의 비밀 지수 $x$와 정확히 일치하는지 비교 연산($x' == x$)을 수행하고 결과를 true 또는 false로 반환한다.
+  - <img width="678" height="137" alt="image" src="https://github.com/user-attachments/assets/5c4f70b6-f159-45fd-938a-0db4d18ba575" />
 
-  - Advantage(어드밴티지)의 정의:
-    - 공격자 $A$가 이산 로그 게임에서 승리(즉, 최종적으로 true를 반환)할 확률을 '공격자의 DL 어드밴티지'라고 정의하며 수식으로는 다음과 같이 표기한다.
-    - <img width="306" height="47" alt="image" src="https://github.com/user-attachments/assets/e6828e4a-f0fc-416a-b74e-156dd069b70c" />
+  - Initialize (초기화): 시스템은 무작위 지수 $x \leftarrow \mathbb{Z}_m$를 무작위로 선택하고, $X \leftarrow g^x$를 계산하여 공격자에게 공격값 $X$를 제공한다.
+  - Finalize (검증): 공격자는 이산 로그 역산을 시도하여 도출한 지수 $x'$를 제출하며, 시스템은 ($x = x'$) 여부를 판별하여 결과를 반환한다.
+
+  - DL-Advantage:
+    - 공격자 $A$가 이 게임에서 정확한 $x$를 찾아내어 승리할 확률을 $Adv_{G,g}^{cdh}(A) = Pr[CDH_{G,g}^A \Rightarrow true]$ 로 정의한다.
+    - 안전한 암호 시스템을 구축하려면 이 확률이 현실적으로 무시할 수 있을 만큼 극히 낮아야 한다.
 ---
-
-
-
-
+- CDH Problem & Relationship to DL
+  - CDH 문제: CDH(Computational Diffie-Hellman) 문제는 실제 Diffie-Hellman 비밀 키 교환 프로토콜의 안전성을 직접적으로 뒷받침하는 핵심 난제이다.
+  - 목표: 생성원 $g$와 네트워크에 공개된 두 값 $X = g^x \in G$, $Y = g^y \in G$가 주어졌을 때, 공격자는 이 정보만을 가지고 두 지수가 결합된 최종 비밀 키 $g^{xy} \in G$를 계산해야 한다.
+  - Relationship:
+    - 만약 공격자가 이산 로그 문제를 풀 수 있는 알고리즘을 가졌다면, 공개값 $X$에서 지수 $x \leftarrow \text{DLog}_{G,g}(X)$를 도출한 뒤 반대편 공개값에 지수화 ($Y^x$)를 수행하여 CDH 문제를 쉽게 해결할 수 있다.
+    - 역으로 "CDH 문제 풀 수 있으면 DL 문제도 풀 수 있는가?"는 미해결 문제이다.
+    - 일단 매우 어렵다고 간주.
+---
 
 
 
