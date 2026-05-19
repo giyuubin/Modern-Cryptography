@@ -7,7 +7,7 @@
   - DL Game: Formal Definition & Advantage
   - CDH Problem & Relationship to DL
   - CDH Game: Advantage Analysis
-- Finding and Building Cyclic Groups
+- Finding Cyclic Groups
   - Mathematical Fact for Group Selection
   - Finding Primes & Safe Prime $(p = 2q + 1)$
   - Primality Testind (Miller-Rabin) & Density
@@ -166,6 +166,25 @@ $$i = \text{DLog}_{G,g}(a)$$
  
   - CDH-Advantage: 공격자 $A$가 CDH 게임에서 정확한 결합 비밀 키를 도출하여 승리할 확률은 $Adv_{G,g}^{cdh}(A) = Pr[CDH_{G,g}^A \Rightarrow true]$ 로 정의된다.
 ---
+- **Finding cyclic groups**
+  - 배경:
+    - 암호학적 시스템이 안전하고 정상적으로 작동하기 위해서는 거대한 크기의 순환 군과 그 군의 전체 공간을 생성하는 생성자(Generator)를 효율적으로 찾아 구축해야 한다.
+    - 이를 위해 시스템은
+      - 1. 적합한 형태의 거대한 소수 $p$를 찾고,
+      - 2. $Z_p^*$내에서 무작위 원소 $g$를 뽑아 생성자인지 테스트하는 과정을 거친다.
+---
+- Finding Cyclic Groups (앞에서 설명한 내용)
+  - 특정 유한군이 순환군이 임을 보장하는 데에는 두 가지 Fact가 존재한다.
+    - Fact1: Let $p$ be a prime. Then $Z_p^*$ is cyclic.
+    - Fact2: Let $G$ be any group whose order $m = |G|$ is a prime number. Then $G$ is cyclic.
+  - $|Z_p^*| = p-1$
+  - $p$가 2보다 큰 홀수 소수일 때, $p-1$은 항상 짝수이므로 소수가 될 수 없다.
+  - 따라서 군의 위수가 소수임을 전제로 하는 Fact2는 Fact1을 증명하거나 함의하지 않으며, 두 정리는 독립적으로 작용한다.
+  ---
+
+
+
+
 
 
 
