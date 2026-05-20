@@ -185,6 +185,8 @@ $$i = \text{DLog}_{G,g}(a)$$
     - <img width="832" height="197" alt="image" src="https://github.com/user-attachments/assets/197bb76a-a389-48d8-a0dd-0c274ebfc5e1" />
 
     - 라그랑주 정리(Lagrange's Theorem)에 의해 군의 부분군 위수는 전체 위수의 약수여야 하므로, 일반 소수 환경에서는 원소의 개수가 아주 작은 소규모 부분군들이 무수히 많이 존재하게 된다.
+    - 악의적인 공격자가 Alice에게 정상적인 생성자 $g$ 대신, 위수가 아주 작은(예: 위수가 3인) 부분군의 생성자 $g_{small}$을 교환 값으로 슬쩍 밀어 넣는다고 가정해 보자.
+    - 이 경우 Alice가 계산하는 값은 $X_{small} = (g_{small})^x \pmod p$가 되는데, 이 값은 Alice의 비밀 키 $x$가 아무리 거대하더라도 단 3가지 상태($g_{small}^0, g_{small}^1, g_{small}^2$) 안에서만 맴돌게 된다.
 
 
 
