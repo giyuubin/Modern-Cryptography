@@ -1,25 +1,9 @@
 - **목차**
 - Discrete Logarithms
-  - Mathematical Definition of DLP
-  - Computing DLog: $Z_p^*$ vs $EC_p$
-  - Why EC Groups & Moore’s Law
 - DL and CDH Games
-  - DL Game: Formal Definition & Advantage
-  - CDH Problem & Relationship to DL
-  - CDH Game: Advantage Analysis
 - Finding Cyclic Groups
-  - Finding Primes & Safe Prime $(p = 2q + 1)$
-  - Primality Testind (Miller-Rabin) & Density
-  - Algorithm for Testing Generators
 - RSA Trapdoor Permutations
-  - RSA Math: Phi Function & Modulo Inverse
-  - RSA Function and Trapdoor One-wayness
-  - Factoring Problem & Attack Complexity
 - PKE and Security Notions
-  - Syntax and Correctness of PKE Schemes
-  - IND-CPA: Indistinguishability under Chosen-Plaintest Attack
-  - IND-CCA: Indistinguishability under Chosen-Ciphertest Attack
-  - Security Hierarchy: IND-CCA vs IND-CPA
 ---
 - **Discrete Logarithms (이산 로그)**
   - 이름의 유래:
@@ -223,3 +207,49 @@ $$i = \text{DLog}_{G,g}(a)$$
   - 결론:
     - 이 정리에 따르면 무작위 정수를 추출해 소수를 판별하는 루프는 평균적으로 대략 700번 이내의 반복(Iteration)만으로도 거대한 크기의 소수를 확정적으로 찾아낼 수 있다.
 ---
+- Algorithm for Testing Generators
+  - 배경:
+    - Findprime 알고리즘을 통해 안전 소수 $p$를 획득했다면, 무작위 원소 $g \in \mathbb{Z}_p^*$가 군 전체를 생성하는 올바른 생성자인지 검증해야 한다.
+    - 원래대로라면 $1$부터 $p-1$까지 지수를 다 대입해 봐야 하므로 매우 비효율적이다.
+    - 여기서 '부분군 공격'을 막기 위해 도입했던 안전 소수($p=2q+1$)의 대수적 특성이 쓰인다.
+    - 라그랑주 정리에 의해 약수가 $\{1, 2, q, 2q\}$로 제한되는 성질을 역이용하면, $g$가 탈락자(진부분군의 원소)인지 확인하기 위해 모든 지수를 대입할 필요가 없어진다.
+  - 생성자 판별 조건:
+    - 단 두 번의 고속 모듈러 지수 연산만으로 생성자 여부를 판별한다.
+      - 1. $g^2 \not\equiv 1 \pmod p$ (위수가 2인 부분군의 원소가 아님을 검증)
+      - 2. $g^q \not\equiv 1 \pmod p$ (위수가 $q$인 부분군의 원소가 아님을 검증)
+---
+- Recall DH Secret Key Exchange
+  - 배경:
+    - Diffie-Hellman key exchange 안전하게 성립하기 위해서는, 도청자가 풀 수 없는 거대한 소수 $p$와 올바른 순환군의 생성자 $g$가 파라미터로 주어져야 한다.
+
+  - 프로토콜 요약:
+    - 전제 조건: 안전 소수 $p$와 검증된 생성자 $g$ 공개
+    - Alice: $X \leftarrow g^x \bmod p$ 계산 후 송신 $\implies$ 키 복원: $K_A \leftarrow Y^x \bmod p$
+    - Bob: $Y \leftarrow g^y \bmod p$ 계산 후 송신 $\implies$ 키 복원: $K_B \leftarrow X^y \bmod p$
+    - 결과: 지수 법칙에 의해 $K_A = K_B = g^{xy} \bmod p$ 의 동일한 세션 키 공유
+    - 공격자는 공개값 $X, Y$를 보고 공통 키를 유도해야 하는 CDH(Computational Diffie-Hellman) 문제에 직면하게 된다.
+   
+  - 결론:
+    - 보안성 측면 (부분군 공격 방어): 만약 Findprime 알고리즘이 안전 소수($p = 2q + 1$)를 엄선해 주지 않았다면, 공격자가 DH 교환 과정에서 소규모 부분군의 원소를 주입하여 Alice와 Bob의 비밀 지수 $x, y$가 '부분군 공격'으로 프로토콜이 무력화되었을 것이다.
+    - 효율성 측면 (생성자 고속 공급): 프로토콜 가동을 위해 생성자 $g$를 찾아야 할 때, 안전 소수 구조 덕분에 라그랑주 정리를 활용한 '단 두 번의 모듈러 지수 연산 검증'만으로 올바른 $g$를 빠르게 공급할 수 있게 되었다.
+---
+- **RSA**
+- RSA Math
+  - 배경:
+    - 이산 로그 기반 암호는 역산이 어려운 일방향성 함수에만 의존했다.
+    - RSA는 구조를 아는 자(비밀키 소유자)만 통과할 수 있는 비밀 통로인 Trapdoor를 대수학적으로 설계하여 일방향성 치환을 구축한다.
+   
+  - Euler's Phi Function, $\varphi(N)$:
+    - 1부터 $N$까지의 정수 중 $N$과 서로소인 정수의 개수를 나타내는 함수이다.
+    - RSA는 두 개의 거대한 서로 다른 소수 $p$와 $q$를 택해 합성수 $N = p \cdot q$를 환경으로 삼는다.
+    - 이때 유한 곱셈군 $Z_N^*$의 크기는 오일러 피 함수의 성질에 따라 다음과 같이 정의된다.
+      - $$\varphi(N) = |\mathbb{Z}_N^*| = (p-1)(q-1)$$
+    - 공격자에게 합성수 $N$이 노출되더라도, $N$을 구성하는 원래의 비밀 소수 $p, q$를 모른다면 $\varphi(N)$ 값을 계산하는 것은 대수적으로 불가능하다.
+   
+  - Modulo Inverse:
+    - 
+
+
+
+
+
