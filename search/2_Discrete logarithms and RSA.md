@@ -8,7 +8,6 @@
   - CDH Problem & Relationship to DL
   - CDH Game: Advantage Analysis
 - Finding Cyclic Groups
-  - Mathematical Fact for Group Selection
   - Finding Primes & Safe Prime $(p = 2q + 1)$
   - Primality Testind (Miller-Rabin) & Density
   - Algorithm for Testing Generators
@@ -173,15 +172,21 @@ $$i = \text{DLog}_{G,g}(a)$$
       - 1. 적합한 형태의 거대한 소수 $p$를 찾고,
       - 2. $Z_p^*$내에서 무작위 원소 $g$를 뽑아 생성자인지 테스트하는 과정을 거친다.
 ---
-- Finding Cyclic Groups (앞에서 설명한 내용)
-  - 특정 유한군이 순환군이 임을 보장하는 데에는 두 가지 Fact가 존재한다.
-    - Fact1: Let $p$ be a prime. Then $Z_p^*$ is cyclic.
-    - Fact2: Let $G$ be any group whose order $m = |G|$ is a prime number. Then $G$ is cyclic.
-  - $|Z_p^*| = p-1$
-  - $p$가 2보다 큰 홀수 소수일 때, $p-1$은 항상 짝수이므로 소수가 될 수 없다.
-  - 따라서 군의 위수가 소수임을 전제로 하는 Fact2는 Fact1을 증명하거나 함의하지 않으며, 두 정리는 독립적으로 작용한다.
-  ---
-
+- Finding primes & Safe prime ($p = 2q + 1$)
+  - 소수 탐색 알고리즘 (Findprime(k)):
+    - 목표하는 비트 길이 $k$가 주어졌을 때, 구간 $2^{k-1}, \dots, 2^k - 1$ 내에서 무작위 정수 $p$를 반복적으로 추출한다.
+   
+  - 안전 소수(Safe prime)의 조건:
+    - 단순히 $p$가 소수인 것만 확인하는 것이 아니라, $q = (p-1)/2$ 연산 결과인 $q$역시 소수인지 동시에 검증한다.
+    - 즉, $p = 2q + 1$ 형태를 만족하는 소수를 암호학에서 안전 소수(Safe prime)라고 부르며, 이를 통해 생성된 군은 부분군 공격 등을 방어할 수 있는 견고한 대수적 구조를 가진다.
+   
+  - 부분군 공격 (Subgroup attack)
+    - DH key exchange에서 Alice는 자신의 비밀 키 $x$를 감추기 위해 $X = g^x \pmod p$를 보낸다.
+    - 정상적인 환경이라면 공격자가 $X$를 보고 $x$를 알아내는 것은 이산 로그 문제(DLP)의 난해성 때문에 불가능하다.
+    - 하지만 공격자가 Alice에게 정상적인 생성자 $g$대신, 위수가 아주 작은(예: 위수가 3인) 부분군의 생성자 $g_{small}$을 교환 값으로 슬쩍 밀어 넣는다고 가정해 보자.
+    - 이 경우 Alice가 계산하는 값은 $X_{small} = (g_{small})^x \pmod p$가 되는데, 이 값은 Alice의 비밀 키 $x$가 아무리 거대하더라도 단 3가지 상태($g_{small}^0, g_{small}^1, g_{small}^2$) 안에서만 맴돌게 된다.
+    - 공격자는 Alice가 출력하는 암호문을 가로채 이 3가지 상태만 대입해 보면, Alice의 거대한 비밀 키 $x$의 전체는 몰라도 $x \pmod 3$ 이라는 나머지를 쉽게 탈취할 수 있다.
+    - 공격자가 이런 방식으로 서로 다른 작은 부분군들을 이용해 정보를 모으면, 중국인의 나머지 정리(CRT) 등을 통해 $x$ 전체를 복원할 수 있다.
 
 
 
