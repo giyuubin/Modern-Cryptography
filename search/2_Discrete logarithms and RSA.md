@@ -247,7 +247,26 @@ $$i = \text{DLog}_{G,g}(a)$$
     - 공격자에게 합성수 $N$이 노출되더라도, $N$을 구성하는 원래의 비밀 소수 $p, q$를 모른다면 $\varphi(N)$ 값을 계산하는 것은 대수적으로 불가능하다.
    
   - Modulo Inverse:
-    - 
+    - $\varphi(N)$과 서로소인 임의의 공개 지수(Public Exponent) $e$를 선택한다.
+      - $\text{gcd}(e, \varphi(N)) = 1$
+    - 확장 유클리드 알고리즘을 이용하면 다음 합동 관계를 만족하는 유일한 비밀 지수(Private Exponent) $d$를 다항 시간 내에 찾아낼 수 있다.
+      - $ed \equiv 1 \pmod{\varphi(N)}$
+    - 이때 임의의 메시지 $x \in \mathbb{Z}_N^*$에 대하여 다음 복원 공식이 항상 성립한다.
+      - $(x^e)^d \equiv x \pmod N$
+     
+    - 증명:
+      - $ed \equiv 1 \pmod{\varphi(N)}$이므로, $ed = k \cdot \varphi(N) + 1$을 만족하는 정수 $k$가 존재한다.
+      - 따라서 지수 법칙과 오일러 정리(Euler's Theorem, $x^{\varphi(N)} \equiv 1 \pmod N$)에 의해 다음과 같이 증명된다.
+        - $(x^e)^d \equiv x^{ed} \equiv x^{k \cdot \varphi(N) + 1} \equiv (x^{\varphi(N)})^k \cdot x^1 \equiv (1)^k \cdot x \equiv x \pmod N$
+
+
+
+
+
+
+
+
+
 
 
 
