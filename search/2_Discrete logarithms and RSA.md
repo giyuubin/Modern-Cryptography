@@ -3,7 +3,6 @@
 - DL and CDH Games
 - Finding Cyclic Groups
 - RSA Trapdoor Permutations
-- PKE and Security Notions
 ---
 - **Discrete Logarithms (이산 로그)**
   - 이름의 유래:
