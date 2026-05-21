@@ -249,21 +249,19 @@ $$i = \text{DLog}_{G,g}(a)$$
         - $(x^e)^d \equiv x^{ed} \equiv x^{k \cdot \varphi(N) + 1} \equiv (x^{\varphi(N)})^k \cdot x^1 \equiv (1)^k \cdot x \equiv x \pmod N$
 ---
 - RSA function and Trapdoor One-wayness
-- RSA 함수 정의 (순방향 치환):
-  - 공개키 쌍을 $pk = (N, e)$, 비밀키 쌍을 $sk = (N, d)$로 정의한다.
-  - RSA 함수 $f$는
-<img width="121" height="27" alt="image" src="https://github.com/user-attachments/assets/16a96d88-62fc-49f1-8a5e-3d2919c3d8a8" />
+- RSA 함수:
+  - 모듈러스 $N$과 암호화 지수 $e \in \mathbb{Z}_{\varphi(N)}^*$ 는 RSA 함수
+  - $f: \mathbb{Z}_N^* \rightarrow \mathbb{Z}_N^*$ 를 다음과 같이 정의한다.
+    - $f(x) = x^e \bmod N \quad (\text{for all } x \in \mathbb{Z}_N^*)$
 
-    로 매핑되는 치환(Permutation) 구조를 가지며, 순방향 거듭제곱 연산으로 정의된다.
+  - 복호화 지수(Decryption Exponent): $ed \bmod \varphi(N) = 1$ 을 만족하는 값 $d \in \mathbb{Z}_{\varphi(N)}^*$ 를 복호화 지수라고 부른다.
+  - 치환(Permutation) 성질: $f$는 군 $\mathbb{Z}_N^*$ 에서 자기 자신으로 매핑되는 1:1 대응 함수(Bijective Function)이다. 즉, 서로 다른 평문은 반드시 서로 다른 결과값으로 매핑된다.
 
-    - $f(x) = x^e \bmod N$
-  - 공개키 $pk$를 아는 송신자: 고속 거듭제곱 알고리즘을 통해 $x^e \bmod N$을 빠른 다항 시간 내에 계산하여 암호화할 수 있다.
-
-- Trapdoor(함정문):
-  - 개인키 $sk$를 아는 수신자: $ed \equiv 1 \pmod{\varphi(N)}$을 만족하는 복호화 지수 $d$라는 '함정문 정보(Trapdoor)'를 쥐고 있으므로, 다음과 같이 역함수를 순식간에 계산해 낸다.
-    - $f^{-1}(y) = y^d \bmod N \quad \left(\because (x^e)^d \equiv x \pmod N\right)$
-  - 아무것도 모르는 공격자: 오직 공개된 결과값 $y$와 $e, N$만 알고 있는 공격자가 원래의 메시지 $x$를 역산하는 것($x \equiv y^{1/e} \pmod N$)은 일방향성에 의해 현실적인 시간 내에 불가능하다.
-
+- Trapdoor One-wayness:
+  - 순방향 연산: ($N$, $e$)가 주어지면, 고속 거듭제곱 알고리즘을 통해 누구나 다항 시간 내에 $f(x) = x^e \bmod N$ 을 쉽게 계산할 수 있다.
+  - 역방향 연산: 오직 ($N$, $e$)와 결과값 $y = f(x)$만 알고 있는 공격자가 원래의 입력값 $x$를 역산하는 것은 일방향성에 의해 현실적인 시간 내에 불가능하다.
+  - Trapdoor: 하지만 비밀 정보인 복호화 지수 $d$라는 Trapdoor 쥐고 있다면, 다음과 같이 단 한 번의 지수 연산으로 역함수 $f^{-1}(y)$를 순식간에 계산해 낼 수 있다.
+    - $f^{-1}(y) = y^d \bmod N = (x^e)^d \bmod N = x$
 - Ex:
   - <img width="677" height="187" alt="image" src="https://github.com/user-attachments/assets/c15aa86e-bfb1-4874-9c05-7423b4fb16ee" />
 
@@ -281,13 +279,7 @@ $$i = \text{DLog}_{G,g}(a)$$
   - <img width="222" height="265" alt="image" src="https://github.com/user-attachments/assets/45425e21-0216-43ed-9aa1-278b6ab4c509" />
 
   - 결론:
-    - $x=2$를 보냈을 때 암호문은 $8$이 되고, 이를 다시 개인키 $d=3$으로 지수 연산하면 원래의 $2$로 깔끔하게 돌아온다.
-    - 구조(비밀 지수 $d$)를 모르는 공격자 시점에서는 원소들이 뒤죽박죽 섞인 순열로 보이기 때문에 역산이 차단되지만, 함정문 정보를 쥔 수신자는 단 한 번의 지수 연산으로 평문을 복구한다.
+    - 평문 $x=2$는 순방향 함수에 의해 $f(2)=8$로 치환되고, 복호화 지수 $d=3$을 이용해 $f^{-1}(8)=2$로 깔끔하게 복원된다.
+    - 평문 $x=7$은 순방향 함수에 의해 $f(7)=13$으로 치환되고, 복호화 지수 $d=3$을 이용해 $f^{-1}(13)=7$로 복원된다.
+    - 비밀 지수 $d$를 모르는 공격자에게는 임의의 원소들이 무작위로 섞인 순열 테이블처럼 보이지만, 이를 알고 있는 수신자는 $y^d \bmod N$ 연산만으로 원래의 평문으로 귀환할 수 있음을 보여준다.
 ---
-
-
-
-
-
-
-
