@@ -258,13 +258,43 @@ $$i = \text{DLog}_{G,g}(a)$$
       - $ed \equiv 1 \pmod{\varphi(N)}$이므로, $ed = k \cdot \varphi(N) + 1$을 만족하는 정수 $k$가 존재한다.
       - 따라서 지수 법칙과 오일러 정리(Euler's Theorem, $x^{\varphi(N)} \equiv 1 \pmod N$)에 의해 다음과 같이 증명된다.
         - $(x^e)^d \equiv x^{ed} \equiv x^{k \cdot \varphi(N) + 1} \equiv (x^{\varphi(N)})^k \cdot x^1 \equiv (1)^k \cdot x \equiv x \pmod N$
+---
+- RSA function and Trapdoor One-wayness
+- RSA 함수 정의 (순방향 치환):
+  - 공개키 쌍을 $pk = (N, e)$, 비밀키 쌍을 $sk = (N, d)$로 정의한다.
+  - RSA 함수 $f$는
+<img width="121" height="27" alt="image" src="https://github.com/user-attachments/assets/16a96d88-62fc-49f1-8a5e-3d2919c3d8a8" />
 
+    로 매핑되는 치환(Permutation) 구조를 가지며, 순방향 거듭제곱 연산으로 정의된다.
 
+    - $f(x) = x^e \bmod N$
+  - 공개키 $pk$를 아는 송신자: 고속 거듭제곱 알고리즘을 통해 $x^e \bmod N$을 빠른 다항 시간 내에 계산하여 암호화할 수 있다.
 
+- Trapdoor(함정문):
+  - 개인키 $sk$를 아는 수신자: $ed \equiv 1 \pmod{\varphi(N)}$을 만족하는 복호화 지수 $d$라는 '함정문 정보(Trapdoor)'를 쥐고 있으므로, 다음과 같이 역함수를 순식간에 계산해 낸다.
+    - $f^{-1}(y) = y^d \bmod N \quad \left(\because (x^e)^d \equiv x \pmod N\right)$
+  - 아무것도 모르는 공격자: 오직 공개된 결과값 $y$와 $e, N$만 알고 있는 공격자가 원래의 메시지 $x$를 역산하는 것($x \equiv y^{1/e} \pmod N$)은 일방향성에 의해 현실적인 시간 내에 불가능하다.
 
+- Ex:
+  - <img width="677" height="187" alt="image" src="https://github.com/user-attachments/assets/c15aa86e-bfb1-4874-9c05-7423b4fb16ee" />
 
+  - 키 생성 (Key Generation)
+    - 두 개의 소수 선택: $p = 3, \; q = 5$
+    - 합성수 모듈러스 계산: $N = p \cdot q = 3 \cdot 5 = 15$
+    - 오일러 피 함수 계산: $\varphi(15) = (3-1)(5-1) = 2 \cdot 4 = 8$
+    - 암호화 지수 $e$ 선택: $\mathbb{Z}_8^*$의 원소 중 $\gcd(e, 8) = 1$을 만족하는 $e = 3$ 채택.
+    - 복호화 지수 $d$ 계산: $3 \cdot d \equiv 1 \pmod 8$을 만족하는 원소를 역산하면 $d = 3$ 도출. ($\because 3 \cdot 3 = 9 \equiv 1 \pmod 8$)
+  - 유한 곱셈군 $\mathbb{Z}_{15}^*$ 정의
+    - $15$와 서로소인 원소들의 집합: $\mathbb{Z}_{15}^* = \{1, 2, 4, 7, 8, 11, 13, 14\}$ (총 위수 $8$)
+  - RSA 치환 매핑 검증 (Permutation Table)
+    - 군의 모든 원소 $x$에 대해 암호화($f(x) = x^3 \bmod 15$)와 복호화($f^{-1}(y) = y^3 \bmod 15$)를 수행하면 다음과 같이 1:1 대칭 치환 구조가 완벽하게 성립한다.
+   
+  - <img width="222" height="265" alt="image" src="https://github.com/user-attachments/assets/45425e21-0216-43ed-9aa1-278b6ab4c509" />
 
-
+  - 결론:
+    - $x=2$를 보냈을 때 암호문은 $8$이 되고, 이를 다시 개인키 $d=3$으로 지수 연산하면 원래의 $2$로 깔끔하게 돌아온다.
+    - 구조(비밀 지수 $d$)를 모르는 공격자 시점에서는 원소들이 뒤죽박죽 섞인 순열로 보이기 때문에 역산이 차단되지만, 함정문 정보를 쥔 수신자는 단 한 번의 지수 연산으로 평문을 복구한다.
+---
 
 
 
