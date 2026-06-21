@@ -1,5 +1,0 @@
-- 알고리즘 체계: $\mathcal{AE} = (\mathcal{K}, \mathcal{E}, \mathcal{D})$
-- 키 생성: $(ek, dk) \leftarrow^{\$} \mathcal{K}$ (확률적 생성)
-- 암호화: $C \leftarrow \mathcal{E}_{ek}(M)$ (반드시 확률적이어야 함)
-- 복호화: $M' \leftarrow \mathcal{D}_{dk}(C)$
-- 정확성 요구사항: $\Pr[\mathcal{D}_{dk}(\mathcal{E}_{ek}(M)) = M] = 1$
